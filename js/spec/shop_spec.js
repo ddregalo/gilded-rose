@@ -47,6 +47,13 @@ describe("Shop", function() {
       gildedRose.updateQuality();
       expect(cheese.quality).toEqual(50);
     });
+
+    it("should decrease quality of item by 2 if sellIn negative", function() {
+      let bread = new Item("bread", 0, 2.5);
+      let gildedRose = new Shop([bread]);
+      gildedRose.updateQuality();
+      expect(bread.quality).toEqual(0.5);
+    });
   });
 
 });
