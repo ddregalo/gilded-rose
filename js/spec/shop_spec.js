@@ -40,6 +40,13 @@ describe("Shop", function() {
       gildedRose.updateQuality();
       expect(milk.quality).toEqual(0);
     });
+
+    it("should not allow quality of an item above 50", function() {
+      let cheese = new Item("Aged Brie", 40, 50);
+      let gildedRose = new Shop([cheese]);
+      gildedRose.updateQuality();
+      expect(cheese.quality).toEqual(50);
+    });
   });
 
 });
