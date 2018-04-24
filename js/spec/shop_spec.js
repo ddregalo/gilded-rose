@@ -33,6 +33,13 @@ describe("Shop", function() {
       gildedRose.updateQuality();
       expect(cheese.quality).toEqual(21);
     });
+
+    it("should not allow quality of an item below 0", function() {
+      let milk = new Item("milk", 0, 0);
+      let gildedRose = new Shop([milk]);
+      gildedRose.updateQuality();
+      expect(milk.quality).toEqual(0);
+    });
   });
 
 });
