@@ -26,6 +26,13 @@ describe("Shop", function() {
       gildedRose.updateQuality();
       expect(bread.quality).toEqual(0.8);
     });
+
+    it("Aged Brie should increase in quality (+1) by day", function() {
+      let cheese = new Item("Aged Brie", 40, 20);
+      let gildedRose = new Shop([cheese]);
+      gildedRose.updateQuality();
+      expect(cheese.quality).toEqual(21);
+    });
   });
 
 });
