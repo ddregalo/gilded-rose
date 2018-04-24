@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/ddregalo/gilded-rose/issues"
   },
-  "homepage": "https://github.com/ddregalo/gilded-rose#readme"
+  "homepage": "https://github.com/ddregalo/gilded-rose#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
 }
