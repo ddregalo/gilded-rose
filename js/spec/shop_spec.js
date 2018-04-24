@@ -13,11 +13,18 @@ describe("Shop", function() {
       expect(items[0].name).toEqual("foo");
     });
 
-    it("should decrease sellIn(!=0) value by 1 for a normal item", function() {
+    it("should decrease sellIn(!=0) value by 1 for normal item", function() {
       let bread = new Item("bread", 2, 1.8);
       let gildedRose = new Shop([bread]);
       gildedRose.updateQuality();
       expect(bread.sellIn).toEqual(1);
+    });
+
+    it("should decrease quality(!=0) value by 1 for normal item", function() {
+      let bread = new Item("bread", 2, 1.8);
+      let gildedRose = new Shop([bread]);
+      gildedRose.updateQuality();
+      expect(bread.quality).toEqual(0.8);
     });
   });
 
