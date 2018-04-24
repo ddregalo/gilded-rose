@@ -1,0 +1,26 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "Gilded Rose Tech Test Practise",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddregalo/gilded-rose.git"
+  },
+  "keywords": [
+    "gilded",
+    "rose"
+  ],
+  "author": "daniel campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddregalo/gilded-rose/issues"
+  },
+  "homepage": "https://github.com/ddregalo/gilded-rose#readme"
+}
