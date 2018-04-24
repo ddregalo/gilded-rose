@@ -5,10 +5,20 @@ describe("Shop", function() {
     expect(gildedRose.items).toEqual([]);
   });
 
-  it("should return the item name that was updated", function() {
-    let gildedRose = new Shop([ new Item("foo", 0, 0) ]);
-    let items = gildedRose.updateQuality();
-    expect(items[0].name).toEqual("foo");
+  describe("#updateQuality", function() {
+
+    it("should return the item name that was updated", function() {
+      let gildedRose = new Shop([ new Item("foo", 0, 0) ]);
+      let items = gildedRose.updateQuality();
+      expect(items[0].name).toEqual("foo");
+    });
+
+    it("should decrease sellIn(!=0) value by 1 for a normal item", function() {
+      let bread = new Item("bread", 2, 1.8);
+      let gildedRose = new Shop([bread]);
+      gildedRose.updateQuality();
+      expect(bread.sellIn).toEqual(1);
+    });
   });
 
 });
