@@ -29,3 +29,7 @@ Choose legacy code (translated by Emily Bache) in the language of your choice. T
 
 * **Code Language**: Javascript
 * **Testing**: Jasmine  
+
+## Default (BAD) Program Model
+
+![Default Gilded Rose Model Program Diagram - Before Changes](gilded-rose-before.png)
