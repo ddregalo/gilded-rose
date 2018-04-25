@@ -18,12 +18,18 @@ class Shop {
       item.quality -= 1
   }
 
+  isNotLegendaryItem (item) {
+    if (!item.name.includes('Sulfuras')) {
+      return true
+    }
+  }
+
   updateQuality () {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isStandardItem(this.items[i])) {
         this.updateStandardItemQuality(this.items[i]);
       } else {
-        if (this.items[i].quality < this.maxQuality && this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
+        if (this.items[i].quality < this.maxQuality && this.isNotLegendaryItem(this.items[i])) {
           this.items[i].quality = this.items[i].quality + 1
           if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].sellIn < 11) {
@@ -39,14 +45,14 @@ class Shop {
           }
         }
       }
-      if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
+      if (this.isNotLegendaryItem(this.items[i])) {
         this.updateSellIn(this.items[i])
       }
       if (this.items[i].sellIn < 0) {
         if (this.items[i].name !== 'Aged Brie') {
           if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].quality > 0) {
-              if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
+              if (this.isNotLegendaryItem(this.items[i])) {
                 this.updateStandardItemQuality (this.items[i]);
               }
             }

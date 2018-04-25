@@ -38,6 +38,14 @@ describe("Shop", function() {
     });
   });
 
+  describe("#isNotLegendaryItem", function() {
+    it("should return true if not a legendary item", function() {
+      let item =  new Item("item", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isNotLegendaryItem(item)).toEqual(true);
+    });
+  });
+
   describe("#updateQuality", function() {
 
     // Testing for update functionality - standard products
