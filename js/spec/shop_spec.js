@@ -38,6 +38,15 @@ describe("Shop", function() {
     });
   });
 
+  describe("#increaseVintageItemQuality", function() {
+    it("should increase the quality of a vintage item by 1", function() {
+      let item = new Item("item", 10, 10);
+      let gildedRose = new Shop([item]);
+      gildedRose.increaseVintageItemQuality(item);
+      expect(item.quality).toEqual(11);
+    });
+  });
+
   describe("#isNotLegendaryItem", function() {
     it("should return true if not a legendary item", function() {
       let item =  new Item("item", 10, 10);

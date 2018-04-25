@@ -15,7 +15,11 @@ class Shop {
   }
 
   updateStandardItemQuality (item) {
-      item.quality -= 1
+    item.quality -= 1
+  }
+
+  increaseVintageItemQuality (item) {
+    item.quality += 1
   }
 
   isNotLegendaryItem (item) {
@@ -30,16 +34,16 @@ class Shop {
         this.updateStandardItemQuality(this.items[i]);
       } else {
         if (this.items[i].quality < this.maxQuality && this.isNotLegendaryItem(this.items[i])) {
-          this.items[i].quality = this.items[i].quality + 1
+          this.increaseVintageItemQuality(this.items[i])
           if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].sellIn < 11) {
               if (this.items[i].quality < this.maxQuality) {
-                this.items[i].quality = this.items[i].quality + 1
+                this.increaseVintageItemQuality(this.items[i])
               }
             }
             if (this.items[i].sellIn < 6) {
               if (this.items[i].quality < this.maxQuality) {
-                this.items[i].quality = this.items[i].quality + 1
+                this.increaseVintageItemQuality(this.items[i])
               }
             }
           }
