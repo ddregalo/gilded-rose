@@ -5,6 +5,15 @@ describe("Shop", function() {
     expect(gildedRose.items).toEqual([]);
   });
 
+  describe("#updateSellIn", function() {
+    it("should decrease item sellIn value by one", function () {
+      let item = new Item("item", 10, 10);
+      let gildedRose = new Shop();
+      gildedRose.updateSellIn(item);
+      expect(item.sellIn).toEqual(9);
+    });
+  });
+
   describe("#updateQuality", function() {
 
     // Testing for update functionality - standard products

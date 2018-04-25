@@ -2,6 +2,11 @@ class Shop {
   constructor (items = []) {
     this.items = items
   }
+
+  updateSellIn (item) {
+    item.sellIn -= 1
+  }
+
   updateQuality () {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
@@ -28,7 +33,7 @@ class Shop {
         }
       }
       if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-        this.items[i].sellIn = this.items[i].sellIn - 1
+        this.updateSellIn(this.items[i])
       }
       if (this.items[i].sellIn < 0) {
         if (this.items[i].name !== 'Aged Brie') {
