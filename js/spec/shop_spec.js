@@ -14,6 +14,16 @@ describe("Shop", function() {
     });
   });
 
+  // Vintage items are items that increase in quality over time
+  // ie. Aged Brie, Backstage Passes
+  describe("#isStandardItem", function() {
+    it("should return true if not vintage item", function() {
+      let item = new Item("item", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isStandardItem(item)).toEqual(true);
+    });
+  });
+
   describe("#updateStandardProductQuality", function() {
     it("should decrease quality by 1",function () {
       let item = new Item("item", 10, 10);
