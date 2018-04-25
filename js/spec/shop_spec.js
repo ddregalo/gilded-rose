@@ -62,7 +62,13 @@ describe("Shop", function() {
       let gildedRose = new Shop ([legendary_item]);
       gildedRose.updateQuality();
       expect(legendary_item.sellIn).toEqual(null);
+    });
 
+    it("Should not change the quality value for legendary items", function() {
+      let legendary_item = new Item("Sulfuras, Hand of Ragnaros", null, 35);
+      let gildedRose = new Shop ([legendary_item]);
+      gildedRose.updateQuality();
+      expect(legendary_item.quality).toEqual(35);
     });
   });
 
