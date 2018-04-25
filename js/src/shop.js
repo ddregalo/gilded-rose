@@ -1,6 +1,7 @@
 class Shop {
-  constructor (items = []) {
+  constructor (items = [], maxQuality = 50) {
     this.items = items
+    this.maxQuality = maxQuality
   }
 
   updateSellIn (item) {
@@ -13,33 +14,25 @@ class Shop {
     }
   }
 
-  updateStandardProductQuality (item) {
+  updateStandardItemQuality (item) {
       item.quality -= 1
   }
 
   updateQuality () {
-    // var self = this;
     for (var i = 0; i < this.items.length; i++) {
-      // if (this.items[i].name !== 'Aged Brie' && this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-      //   if (this.items[i].quality > 0) {
-      //     if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-      //       this.updateStandardProductQuality(this.items[i]);
-      //     }
-      //   }
-      // } else {
       if (this.isStandardItem(this.items[i])) {
-        this.updateStandardProductQuality(this.items[i]);
+        this.updateStandardItemQuality(this.items[i]);
       } else {
-        if (this.items[i].quality < 50 && this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
+        if (this.items[i].quality < this.maxQuality && this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
           this.items[i].quality = this.items[i].quality + 1
           if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
+              if (this.items[i].quality < this.maxQuality) {
                 this.items[i].quality = this.items[i].quality + 1
               }
             }
             if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
+              if (this.items[i].quality < this.maxQuality) {
                 this.items[i].quality = this.items[i].quality + 1
               }
             }
@@ -54,14 +47,14 @@ class Shop {
           if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].quality > 0) {
               if (this.items[i].name !== 'Sulfuras, Hand of Ragnaros') {
-                this.updateStandardProductQuality (this.items[i]);
+                this.updateStandardItemQuality (this.items[i]);
               }
             }
           } else {
             this.items[i].quality = this.items[i].quality - this.items[i].quality
           }
         } else {
-          if (this.items[i].quality < 50) {
+          if (this.items[i].quality < this.maxQuality) {
             this.items[i].quality = this.items[i].quality + 1
           }
         }

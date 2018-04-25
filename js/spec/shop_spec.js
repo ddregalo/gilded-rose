@@ -5,6 +5,11 @@ describe("Shop", function() {
     expect(gildedRose.items).toEqual([]);
   });
 
+  it("should have a maxQuality property of 50", function() {
+    let gildedRose = new Shop();
+    expect(gildedRose.maxQuality).toEqual(50);
+  });
+
   describe("#updateSellIn", function() {
     it("should decrease item sellIn value by one", function () {
       let item = new Item("item", 10, 10);
@@ -24,11 +29,11 @@ describe("Shop", function() {
     });
   });
 
-  describe("#updateStandardProductQuality", function() {
+  describe("#updateStandardItemQuality", function() {
     it("should decrease quality by 1",function () {
       let item = new Item("item", 10, 10);
       let gildedRose = new Shop();
-      gildedRose.updateStandardProductQuality(item);
+      gildedRose.updateStandardItemQuality(item);
       expect(item.quality).toEqual(9);
     });
   });
