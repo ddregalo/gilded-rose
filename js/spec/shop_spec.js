@@ -7,6 +7,7 @@ describe("Shop", function() {
 
   describe("#updateQuality", function() {
 
+    // Testing for update functionality - standard products
     it("should return the item name that was updated", function() {
       let gildedRose = new Shop([ new Item("foo", 0, 0) ]);
       let items = gildedRose.updateQuality();
@@ -49,7 +50,7 @@ describe("Shop", function() {
     });
 
     // Aged Brie item testing
-    it("Aged Brie should increase in quality (+1) by day", function() {
+    it("Aged Brie should increase in quality (+1)", function() {
       let cheese = new Item("Aged Brie", 40, 20);
       let gildedRose = new Shop([cheese]);
       gildedRose.updateQuality();
@@ -70,6 +71,36 @@ describe("Shop", function() {
       gildedRose.updateQuality();
       expect(legendary_item.quality).toEqual(35);
     });
+
+    // Backstage pass item testing
+    it("Backstage pass quality (+1) with > 10 days until show)", function() {
+      let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+      let gildedRose = new Shop([tix]);
+      gildedRose.updateQuality();
+      expect(tix.quality).toEqual(21);
+    });
+
+    it("Backstage pass quality (+2) with <= 10 days until show)", function() {
+      let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20);
+      let gildedRose = new Shop([tix]);
+      gildedRose.updateQuality();
+      expect(tix.quality).toEqual(22);
+    });
+
+    it("Backstage pass quality (+5) with <= 5 days until show)", function() {
+      let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20);
+      let gildedRose = new Shop([tix]);
+      gildedRose.updateQuality();
+      expect(tix.quality).toEqual(23);
+    });
+
+    it("Backstage pass quality=0 after the show)", function() {
+      let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20);
+      let gildedRose = new Shop([tix]);
+      gildedRose.updateQuality();
+      expect(tix.quality).toEqual(0);
+    });
+
   });
 
 });
