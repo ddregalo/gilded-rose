@@ -27,13 +27,6 @@ describe("Shop", function() {
       expect(bread.quality).toEqual(0.8);
     });
 
-    it("Aged Brie should increase in quality (+1) by day", function() {
-      let cheese = new Item("Aged Brie", 40, 20);
-      let gildedRose = new Shop([cheese]);
-      gildedRose.updateQuality();
-      expect(cheese.quality).toEqual(21);
-    });
-
     it("should not allow quality of an item below 0", function() {
       let milk = new Item("milk", 0, 0);
       let gildedRose = new Shop([milk]);
@@ -53,6 +46,23 @@ describe("Shop", function() {
       let gildedRose = new Shop([bread]);
       gildedRose.updateQuality();
       expect(bread.quality).toEqual(0.5);
+    });
+
+    // Aged Brie item testing
+    it("Aged Brie should increase in quality (+1) by day", function() {
+      let cheese = new Item("Aged Brie", 40, 20);
+      let gildedRose = new Shop([cheese]);
+      gildedRose.updateQuality();
+      expect(cheese.quality).toEqual(21);
+    });
+
+    // Sulfuras Legendary item testing
+    it("Should not change the sellIn value for legendary items", function() {
+      let legendary_item = new Item("Sulfuras, Hand of Ragnaros", null, 35);
+      let gildedRose = new Shop ([legendary_item]);
+      gildedRose.updateQuality();
+      expect(legendary_item.sellIn).toEqual(null);
+
     });
   });
 
