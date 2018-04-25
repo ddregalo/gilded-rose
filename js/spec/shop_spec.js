@@ -14,6 +14,15 @@ describe("Shop", function() {
     });
   });
 
+  describe("#updateStandardProductQuality", function() {
+    it("should decrease quality by 1",function () {
+      let item = new Item("item", 10, 10);
+      let gildedRose = new Shop();
+      gildedRose.updateStandardProductQuality(item);
+      expect(item.quality).toEqual(9);
+    });
+  });
+
   describe("#updateQuality", function() {
 
     // Testing for update functionality - standard products
@@ -103,7 +112,7 @@ describe("Shop", function() {
       expect(tix.quality).toEqual(23);
     });
 
-    it("Backstage pass quality=0 after the show)", function() {
+    it("Backstage pass quality=0 after the show", function() {
       let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20);
       let gildedRose = new Shop([tix]);
       gildedRose.updateQuality();
