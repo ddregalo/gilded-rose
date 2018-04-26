@@ -10,22 +10,38 @@ describe("Shop", function() {
     expect(gildedRose.maxQuality).toEqual(50);
   });
 
+  // Vintage items are items that increase in quality over time
+  // ie. Aged Brie, Backstage Passes
+  describe("#isStandardItem", function() {
+    it("should return true if not vintage or legendary item", function() {
+      let item = new Item("item", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isStandardItem(item)).toEqual(true);
+    });
+  });
+
+  describe("#isNotLegendaryItem", function() {
+    it("should return true if not a legendary item", function() {
+      let item =  new Item("item", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isNotLegendaryItem(item)).toEqual(true);
+    });
+  });
+
+  describe("#isBackstagePass", function() {
+    it("should return true is the item is a backstage pass", function() {
+      let item = new Item("Backstage passes to Sudo Master", 20, 40);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isBackstagePass(item)).toEqual(true);
+    });
+  });
+
   describe("#updateSellIn", function() {
     it("should decrease item sellIn value by one", function () {
       let item = new Item("item", 10, 10);
       let gildedRose = new Shop();
       gildedRose.updateSellIn(item);
       expect(item.sellIn).toEqual(9);
-    });
-  });
-
-  // Vintage items are items that increase in quality over time
-  // ie. Aged Brie, Backstage Passes
-  describe("#isStandardItem", function() {
-    it("should return true if not vintage item", function() {
-      let item = new Item("item", 10, 10);
-      let gildedRose = new Shop([item]);
-      expect(gildedRose.isStandardItem(item)).toEqual(true);
     });
   });
 
@@ -44,14 +60,6 @@ describe("Shop", function() {
       let gildedRose = new Shop([item]);
       gildedRose.increaseVintageItemQuality(item);
       expect(item.quality).toEqual(11);
-    });
-  });
-
-  describe("#isNotLegendaryItem", function() {
-    it("should return true if not a legendary item", function() {
-      let item =  new Item("item", 10, 10);
-      let gildedRose = new Shop([item]);
-      expect(gildedRose.isNotLegendaryItem(item)).toEqual(true);
     });
   });
 
