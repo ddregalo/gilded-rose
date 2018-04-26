@@ -17,6 +17,12 @@ class Shop {
     }
   }
 
+  isVintageItem (item) {
+    if (!this.isStandardItem(item) && this.isNotLegendaryItem(item)) {
+      return true
+    }
+  }
+
   isNotLegendaryItem (item) {
     if (!item.name.includes('Sulfuras')) {
       return true
@@ -62,15 +68,19 @@ class Shop {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isStandardItem(this.items[i])) {
         this.updateStandardItemQuality(this.items[i])
-      } else {
-        if (this.isNotLegendaryItem(this.items[i])) {
-          this.increaseVintageItemQuality(this.items[i])
-        }
-        this.calculatePassPremium(this.items[i])
       }
+      // else {
+
+      if (this.isVintageItem(this.items[i])) {
+        this.increaseVintageItemQuality(this.items[i])
+      }
+      this.calculatePassPremium(this.items[i])
+      // }
+
       if (this.isNotLegendaryItem(this.items[i])) {
         this.updateSellIn(this.items[i])
       }
+
       if (this.items[i].sellIn < 0) {
         if (this.isStandardItem(this.items[i])) {
           this.updateStandardItemQuality(this.items[i])
@@ -78,11 +88,11 @@ class Shop {
           this.expireItem(this.items[i])
         }
       }
+
       if (this.items[i].quality > this.maxQuality) {
         this.items[i].quality = this.maxQuality
       }
     }
-
     return this.items
   }
 }

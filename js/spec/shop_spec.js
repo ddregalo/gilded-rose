@@ -30,6 +30,14 @@ describe("Shop", function() {
     });
   });
 
+  describe("#isVintageItem", function() {
+    it("should return true if item is vintage item", function() {
+      let item = new Item("Aged Brie", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isVintageItem(item)).toEqual(true);
+    });
+  });
+
   describe("#isNotLegendaryItem", function() {
     it("should return true if not a legendary item", function() {
       let item =  new Item("item", 10, 10);
