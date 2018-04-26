@@ -55,6 +55,22 @@ describe("Shop", function() {
     });
   });
 
+  describe("#calculatePassPremium", function() {
+    it("should + 1 to item quality if event <11 days away", function() {
+      let item = new Item("Backstage passes to Sudo Master", 10, 40);
+      let gildedRose = new Shop ([item]);
+      gildedRose.calculatePassPremium(item);
+      expect(item.quality).toEqual(41);
+    });
+
+    it("should + 2 to item quality if event <6 days away", function() {
+      let item = new Item("Backstage passes to Sudo Master", 5, 40);
+      let gildedRose = new Shop ([item]);
+      gildedRose.calculatePassPremium(item);
+      expect(item.quality).toEqual(42);
+    });
+  });
+
   describe("#updateQuality", function() {
 
     // Testing for update functionality - standard products
@@ -137,7 +153,7 @@ describe("Shop", function() {
       expect(tix.quality).toEqual(22);
     });
 
-    it("Backstage pass quality (+5) with <= 5 days until show)", function() {
+    it("Backstage pass quality (+3) with <= 5 days until show)", function() {
       let tix = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20);
       let gildedRose = new Shop([tix]);
       gildedRose.updateQuality();

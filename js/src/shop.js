@@ -28,27 +28,34 @@ class Shop {
     }
   }
 
+  calculatePassPremium (item) {
+    if (item.name.includes('Backstage passes')) {
+      if (item.sellIn < 11) {
+        this.increaseVintageItemQuality(item)
+      }
+      if (item.sellIn < 6) {
+        this.increaseVintageItemQuality(item)
+      }
+    }
+  }
+
   updateQuality () {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isStandardItem(this.items[i])) {
-        this.updateStandardItemQuality(this.items[i]);
+        this.updateStandardItemQuality(this.items[i])
       } else {
-        // if (this.items[i].quality < this.maxQuality && this.isNotLegendaryItem(this.items[i])) {
         if (this.isNotLegendaryItem(this.items[i])) {
           this.increaseVintageItemQuality(this.items[i])
-          if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].sellIn < 11) {
-              // if (this.items[i].quality < this.maxQuality) {
-                this.increaseVintageItemQuality(this.items[i])
-              // }
-            }
-            if (this.items[i].sellIn < 6) {
-              // if (this.items[i].quality < this.maxQuality) {
-                this.increaseVintageItemQuality(this.items[i])
-              // }
-            }
-          }
+          // if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
+          //   if (this.items[i].sellIn < 11) {
+          //     this.increaseVintageItemQuality(this.items[i])
+          //   }
+          //   if (this.items[i].sellIn < 6) {
+          //     this.increaseVintageItemQuality(this.items[i])
+          //   }
+          // }
         }
+        this.calculatePassPremium(this.items[i])
       }
       if (this.isNotLegendaryItem(this.items[i])) {
         this.updateSellIn(this.items[i])
@@ -58,17 +65,15 @@ class Shop {
           if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].quality > 0) {
               if (this.isNotLegendaryItem(this.items[i])) {
-                this.updateStandardItemQuality (this.items[i]);
+                this.updateStandardItemQuality(this.items[i])
               }
             }
           } else {
             this.items[i].quality = this.items[i].quality - this.items[i].quality
           }
-        } else {
-          // if (this.items[i].quality < this.maxQuality) {
-            this.increaseVintageItemQuality(this.items[i])
-          // }
-        }
+        }// } else {
+        //     this.increaseVintageItemQuality(this.items[i])
+        // }
       }
       if (this.items[i].quality > this.maxQuality) {
         this.items[i].quality = this.maxQuality
