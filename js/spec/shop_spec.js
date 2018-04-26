@@ -71,6 +71,15 @@ describe("Shop", function() {
     });
   });
 
+  describe("#expireItem", function() {
+    it("should set item quality to 0", function() {
+      let item = new Item("item", -1, 3);
+      let gildedRose = new Shop([item]);
+      gildedRose.expireItem(item);
+      expect(item.quality).toEqual(0);
+    });
+  });
+
   describe("#updateQuality", function() {
 
     // Testing for update functionality - standard products

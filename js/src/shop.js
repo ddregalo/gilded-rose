@@ -29,7 +29,9 @@ class Shop {
   }
 
   calculatePassPremium (item) {
-    if (item.name.includes('Backstage passes')) {
+    if (item.name.includes('Backstage passes' && item.sellIn < 0)) {
+      item.quality = 0
+    } else if (item.name.includes('Backstage passes')) {
       if (item.sellIn < 11) {
         this.increaseVintageItemQuality(item)
       }
@@ -39,6 +41,10 @@ class Shop {
     }
   }
 
+  expireItem (item) {
+    item.quality = 0
+  }
+
   updateQuality () {
     for (var i = 0; i < this.items.length; i++) {
       if (this.isStandardItem(this.items[i])) {
@@ -46,14 +52,6 @@ class Shop {
       } else {
         if (this.isNotLegendaryItem(this.items[i])) {
           this.increaseVintageItemQuality(this.items[i])
-          // if (this.items[i].name === 'Backstage passes to a TAFKAL80ETC concert') {
-          //   if (this.items[i].sellIn < 11) {
-          //     this.increaseVintageItemQuality(this.items[i])
-          //   }
-          //   if (this.items[i].sellIn < 6) {
-          //     this.increaseVintageItemQuality(this.items[i])
-          //   }
-          // }
         }
         this.calculatePassPremium(this.items[i])
       }
@@ -69,7 +67,7 @@ class Shop {
               }
             }
           } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality
+            this.expireItem(this.items[i])
           }
         }// } else {
         //     this.increaseVintageItemQuality(this.items[i])
