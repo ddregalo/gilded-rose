@@ -33,3 +33,17 @@ Choose legacy code (translated by Emily Bache) in the language of your choice. T
 ## Default (BAD) Program Model
 
 ![Default Gilded Rose Model Program Diagram - Before Changes](gilded-rose-before.png)
+
+## My Process
+
+I approached the problem by familiarising myself with the specifications and mapping out a basic representation of the program logic (see diagram above). The issues with the original program was that all the operations were performed by one method in one class (no SRP) as well as only 1 unit test.
+
+I proceeded by writing unit tests for the Shop class: first for standard items, then through vintage items (Aged Brie, Backstage passes) and finally legendary items. I also wrote tests for all edge cases (ie. sellIn date less than 0, quality of item cannot be over 50).
+
+After writing and passing unit tests, I refactored the UpdateQuality method by extracting patterns in the code and creating other methods out of them. I implemented the new methods into the logic by working my way through the original code and maintaining passing tests.
+
+Finally, I implemented the new 'Conjured item' feature in which quality degrades twice as fast as standard items. I did this by adding a two new methods: *isConjuredItem* and *updateConjuredItemQuality* and then implementing those methods into the code logic.
+
+See below for a flow diagram that outlines the iteration loop for each item in the shop and how they are updated.
+
+ ![New Refactored Gilded Rose Model Program Diagram - After Changes](gildedRoseNew-flowDiagram_April2018.png)
