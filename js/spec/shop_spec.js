@@ -54,6 +54,14 @@ describe("Shop", function() {
     });
   });
 
+  describe("#isConjuredItem", function() {
+    it("should return true if conjured item", function() {
+      let item = new Item("Conjured cards", 10, 10);
+      let gildedRose = new Shop([item]);
+      expect(gildedRose.isConjuredItem(item)).toEqual(true);
+    });
+  });
+
   describe("#updateSellIn", function() {
     it("should decrease item sellIn value by one", function () {
       let item = new Item("item", 10, 10);

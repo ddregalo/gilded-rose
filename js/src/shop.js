@@ -35,6 +35,12 @@ class Shop {
     }
   }
 
+  isConjuredItem (item) {
+    if (item.name.includes('Conjured')) {
+      return true
+    }
+  }
+
   updateSellIn (item) {
     item.sellIn -= 1
   }
@@ -69,13 +75,12 @@ class Shop {
       if (this.isStandardItem(this.items[i])) {
         this.updateStandardItemQuality(this.items[i])
       }
-      // else {
 
       if (this.isVintageItem(this.items[i])) {
         this.increaseVintageItemQuality(this.items[i])
       }
+
       this.calculatePassPremium(this.items[i])
-      // }
 
       if (this.isNotLegendaryItem(this.items[i])) {
         this.updateSellIn(this.items[i])
