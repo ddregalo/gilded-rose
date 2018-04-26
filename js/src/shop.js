@@ -12,13 +12,13 @@ class Shop {
   }
 
   isStandardItem (item) {
-    if (item.name !== 'Aged Brie' && !this.isBackstagePass(item) && !item.name.includes('Sulfuras') && item.quality > 0) {
+    if (item.name !== 'Aged Brie' && !this.isBackstagePass(item) && this.isNotLegendaryItem(item) && !this.isConjuredItem(item) && item.quality > 0) {
       return true
     }
   }
 
   isVintageItem (item) {
-    if (!this.isStandardItem(item) && this.isNotLegendaryItem(item)) {
+    if (!this.isStandardItem(item) && this.isNotLegendaryItem(item) && !this.isConjuredItem(item)) {
       return true
     }
   }
@@ -82,6 +82,10 @@ class Shop {
 
       if (this.isVintageItem(this.items[i])) {
         this.increaseVintageItemQuality(this.items[i])
+      }
+
+      if (this.isConjuredItem(this.items[i])) {
+        this.updateConjuredItemQuality(this.items[i])
       }
 
       this.calculatePassPremium(this.items[i])

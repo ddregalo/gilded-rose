@@ -219,6 +219,14 @@ describe("Shop", function() {
       expect(tix.quality).toEqual(0);
     });
 
+    // Conjured item testing
+    it("Conjured item quality should decrease by 2 (sellIn >0)", function() {
+      let conjuredItem = new Item("Conjured cards", 10, 40);
+      let gildedRose = new Shop([conjuredItem]);
+      gildedRose.updateQuality();
+      expect(conjuredItem.quality).toEqual(38);
+    });
+
   });
 
 });
