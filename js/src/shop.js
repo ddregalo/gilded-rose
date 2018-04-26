@@ -59,17 +59,21 @@ class Shop {
         this.updateSellIn(this.items[i])
       }
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name !== 'Aged Brie') {
-          if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].quality > 0) {
-              if (this.isNotLegendaryItem(this.items[i])) {
-                this.updateStandardItemQuality(this.items[i])
-              }
-            }
-          } else {
-            this.expireItem(this.items[i])
-          }
-        }// } else {
+        // if (this.items[i].name !== 'Aged Brie') {
+        //   if (this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert') {
+        //     if (this.items[i].quality > 0) {
+        //       if (this.isNotLegendaryItem(this.items[i])) {
+        //         this.updateStandardItemQuality(this.items[i])
+        //       }
+        //     }
+        //   } else {
+        if (this.isStandardItem(this.items[i])) {
+          this.updateStandardItemQuality(this.items[i])
+        } else if (this.items[i].name.includes('Backstage passes')) {
+          this.expireItem(this.items[i])
+        }
+        // }
+        // } else {
         //     this.increaseVintageItemQuality(this.items[i])
         // }
       }
