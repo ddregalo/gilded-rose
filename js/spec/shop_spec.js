@@ -10,6 +10,16 @@ describe("Shop", function() {
     expect(gildedRose.maxQuality).toEqual(50);
   });
 
+  it("should have a passPremium property of 11", function() {
+    let gildedRose = new Shop();
+    expect(gildedRose.passPremium).toEqual(11);
+  });
+
+  it("should have a passPremiumDouble property of 6", function() {
+    let gildedRose = new Shop();
+    expect(gildedRose.passPremiumDouble).toEqual(6);
+  });
+
   // Vintage items are items that increase in quality over time
   // ie. Aged Brie, Backstage Passes
   describe("#isStandardItem", function() {

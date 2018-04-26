@@ -1,7 +1,14 @@
 class Shop {
-  constructor (items = [], maxQuality = 50) {
+  constructor (
+    items = [],
+    maxQuality = 50,
+    passPremium = 11,
+    passPremiumDouble = 6
+  ) {
     this.items = items
     this.maxQuality = maxQuality
+    this.passPremium = passPremium
+    this.passPremiumDouble = passPremiumDouble
   }
 
   isStandardItem (item) {
@@ -38,10 +45,10 @@ class Shop {
     if (this.isBackstagePass(item) && item.sellIn < 0) {
       item.quality = 0
     } else if (item.name.includes('Backstage passes')) {
-      if (item.sellIn < 11) {
+      if (item.sellIn < this.passPremium) {
         this.increaseVintageItemQuality(item)
       }
-      if (item.sellIn < 6) {
+      if (item.sellIn < this.passPremiumDouble) {
         this.increaseVintageItemQuality(item)
       }
     }
