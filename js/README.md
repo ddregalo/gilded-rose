@@ -46,4 +46,4 @@ Finally, I implemented the new 'Conjured item' feature in which quality degrades
 
 See below for a flow diagram that outlines the iteration loop for each item in the shop and how they are updated.
 
- ![New Refactored Gilded Rose Model Program Diagram - After Changes](gildedRoseNew-flowDiagram_April2018.png)
+ ![New Refactored Gilded Rose Model Program Diagram - After Changes](gildedRoseNew_flowDiagram_April2018.png)
