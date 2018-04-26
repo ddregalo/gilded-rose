@@ -97,6 +97,8 @@ class Shop {
       if (this.items[i].sellIn < 0) {
         if (this.isStandardItem(this.items[i])) {
           this.updateStandardItemQuality(this.items[i])
+        } else if (this.isConjuredItem(this.items[i])) {
+          this.updateConjuredItemQuality(this.items[i])
         } else if (this.isBackstagePass(this.items[i])) {
           this.expireItem(this.items[i])
         }

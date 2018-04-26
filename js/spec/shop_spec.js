@@ -231,11 +231,14 @@ describe("Shop", function() {
       let conjuredItem = new Item("Conjured cards", 10, 40);
       let gildedRose = new Shop([conjuredItem]);
       gildedRose.updateQuality();
-      expect(conjuredItem.sellIn).toEqual(9);    
+      expect(conjuredItem.sellIn).toEqual(9);
     });
 
     it("Conjured item quality should decrease by 4 if sellIn negative", function() {
-      let = conjuredItem = new Item("Conjured cards", 0)
+      let = conjuredItem = new Item("Conjured cards", 0, 40);
+      let gildedRose = new Shop([conjuredItem]);
+      gildedRose.updateQuality();
+      expect(conjuredItem.quality).toEqual(36);
     });
   });
 
