@@ -89,6 +89,15 @@ describe("Shop", function() {
     });
   });
 
+  describe("#updateConjuredItemQuality", function() {
+    it("should decrease item quality by 2", function() {
+      let item = new Item("Conjured cards", 10, 40);
+      let gildedRose = new Shop([item]);
+      gildedRose.updateConjuredItemQuality(item);
+      expect(item.quality).toEqual(38);
+    });
+  });
+
   describe("#calculatePassPremium", function() {
     it("should + 1 to item quality if event <11 days away", function() {
       let item = new Item("Backstage passes to Sudo Master", 10, 40);

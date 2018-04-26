@@ -53,6 +53,10 @@ class Shop {
     item.quality += 1
   }
 
+  updateConjuredItemQuality (item) {
+    item.quality -= 2
+  }
+
   calculatePassPremium (item) {
     if (this.isBackstagePass(item) && item.sellIn < 0) {
       item.quality = 0
